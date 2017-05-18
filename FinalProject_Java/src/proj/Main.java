@@ -27,16 +27,18 @@ public class Main extends JFrame implements ActionListener {
  	buttons = new JButton[12];
     JButton button1 = new JButton();
     int[] a = new int[3];
-/*    
+
     JLabel labans[];
     labans = new JLabel[5];
-    labans[1] = new JLabel(String.valueOf(a[0]));
-    labans[2] = new JLabel(String.valueOf(a[0]));
-    labans[3] = new JLabel(String.valueOf(a[0]));
-    labans[1].setVisible(false);
-    labans[2].setVisible(false);
-    labans[3].setVisible(false);
-    */
+ 
+    labans[0] = new JLabel("hi");
+    labans[1] = new JLabel("..");
+    labans[2] = new JLabel("...");
+
+    
+    for(int i = 0; i < 3; i++) {
+   	 panel.add(labans[i]);
+    }
     
      for(int i = 0; i < 12; i++) {
          buttons[i] = new JButton(String.valueOf(i+1));
@@ -47,10 +49,14 @@ public class Main extends JFrame implements ActionListener {
              public void actionPerformed(ActionEvent e) {
                  for (int j = 0; j < 12; j++) {
                      if (e.getSource() == buttons[j]) {
-                    	 int i=0;
-                         a[i] = j+1;
-                         JOptionPane.showMessageDialog(null, (a[i]));
- //                        labans[i].setVisible(true);
+                    	 int k=0;
+                    	 
+                    	 System.out.println(k);
+                         a[k] = j+1;
+                         JOptionPane.showMessageDialog(null, (a[k]));
+                         labans[k].setText(k+':'+String.valueOf(a[k]));
+                        labans[k].setVisible(true);
+                        k=k+1;
                      }
                  }
              }
@@ -76,9 +82,6 @@ public class Main extends JFrame implements ActionListener {
      panel.add(ques);
      panel.add(ans);
      ques.setVisible(true);
-     
-
-     
      frame.setVisible(true);
      
      

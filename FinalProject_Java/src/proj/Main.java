@@ -21,7 +21,7 @@ public class Main extends JFrame implements ActionListener {
      frame.setVisible(true);
      
      JPanel panel = new JPanel();
-     Frame frm=new Frame("Action Event"); 
+     
      
  	JButton buttons[];
  	buttons = new JButton[12];
@@ -31,7 +31,17 @@ public class Main extends JFrame implements ActionListener {
          buttons[i] = new JButton(String.valueOf(i+1));
          buttons[i].setActionCommand(String.valueOf(i+1));
          
-         buttons[i].addActionListener((ActionListener) frm);
+         buttons[i].addActionListener( new ActionListener() {
+        	 
+             public void actionPerformed(ActionEvent e) {
+                 for (int j = 0; j < 12; j++) {
+                     if (e.getSource() == buttons[j]) {
+                         JOptionPane.showMessageDialog(null, (j+1));
+                     }
+                 }
+             }
+         });
+         
      }
 
      
@@ -68,14 +78,6 @@ public class Main extends JFrame implements ActionListener {
          }
      });
      
-     public void actionPerformed(ActionEvent e) {
-         String cmd = frm.getActionCommand();
-         for(int i=0; i<3;i++ ) {
-        	 ans.setLabel();
-         }
-
-     }
-
 	
 	}
 

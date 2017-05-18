@@ -21,12 +21,23 @@ public class Main extends JFrame implements ActionListener {
      frame.setVisible(true);
      
      JPanel panel = new JPanel();
-     
+     frame.add(panel);
      
  	JButton buttons[];
  	buttons = new JButton[12];
-     JButton button1 = new JButton();
-     
+    JButton button1 = new JButton();
+    int[] a = new int[3];
+/*    
+    JLabel labans[];
+    labans = new JLabel[5];
+    labans[1] = new JLabel(String.valueOf(a[0]));
+    labans[2] = new JLabel(String.valueOf(a[0]));
+    labans[3] = new JLabel(String.valueOf(a[0]));
+    labans[1].setVisible(false);
+    labans[2].setVisible(false);
+    labans[3].setVisible(false);
+    */
+    
      for(int i = 0; i < 12; i++) {
          buttons[i] = new JButton(String.valueOf(i+1));
          buttons[i].setActionCommand(String.valueOf(i+1));
@@ -36,7 +47,10 @@ public class Main extends JFrame implements ActionListener {
              public void actionPerformed(ActionEvent e) {
                  for (int j = 0; j < 12; j++) {
                      if (e.getSource() == buttons[j]) {
-                         JOptionPane.showMessageDialog(null, (j+1));
+                    	 int i=0;
+                         a[i] = j+1;
+                         JOptionPane.showMessageDialog(null, (a[i]));
+ //                        labans[i].setVisible(true);
                      }
                  }
              }
@@ -50,21 +64,20 @@ public class Main extends JFrame implements ActionListener {
      final JLabel label = new JLabel("Hello World");
      label.setVisible(false);
      
-     JLabel ques = new JLabel("三個音:" + n1 + ' ' + n2 + ' ' + n3);
-     JLabel ans = new JLabel("ans:");
+     panel.add(button1);   
+     for(int i = 0; i < 12; i++) {
+    	 panel.add(buttons[i]);
+     }    
      
-     frame.add(panel);
-
+     JLabel ques = new JLabel("三個音:" + n1 + ' ' + n2 + ' ' + n3);
+     JLabel ans = new JLabel("ans:" + a[0] + ' ' + a[1] + ' ' + a[2]);
      
      panel.add(label);
      panel.add(ques);
      panel.add(ans);
      ques.setVisible(true);
      
-     panel.add(button1);   
-     for(int i = 0; i < 12; i++) {
-    	 panel.add(buttons[i]);
-     }    
+
      
      frame.setVisible(true);
      

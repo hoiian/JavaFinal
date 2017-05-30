@@ -9,9 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class Main extends JFrame implements ActionListener {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	protected static int k=0;
-
-
 	public static void main(String args[]) {
 	Random rand = new Random();
 	int n1 = rand.nextInt(12) + 1;
@@ -32,7 +36,6 @@ public class Main extends JFrame implements ActionListener {
 
     JLabel labans[];
     labans = new JLabel[5];
- 
     labans[0] = new JLabel("");
     labans[1] = new JLabel("");
     labans[2] = new JLabel("");
@@ -52,20 +55,55 @@ public class Main extends JFrame implements ActionListener {
                  for (int j = 0; j < 12; j++) {
                      if (e.getSource() == buttons[j]) {
                     	                     	 
-                    	 System.out.println(k);
+                 //   	 System.out.println(k);
                          a[k] = j+1;
                   //       JOptionPane.showMessageDialog(null, (a[k]));
                          labans[k].setText("第"+k+"個答案:"+String.valueOf(a[k]));
                     //    labans[k].setVisible(true);
                         ++k;
+                        if(k==1){
+	                         int diff1=Math.abs(a[0]-n1);
+						     System.out.println("差"+diff1);
+						     switch(diff1){
+						     case 0: System.out.println("10分");break;
+						     case 1: System.out.println("8分");break;
+						     case 2: System.out.println("6分");break;
+						     case 3: System.out.println("4分");break;
+						     case 4: System.out.println("2分");break;
+						     default :System.out.println("0分");
+						     }
+                        }else if(k==2){
+	                         int diff2=Math.abs(a[1]-n2);
+						     System.out.println("差"+diff2);
+						     switch(diff2){
+						     case 0: System.out.println("10分");break;
+						     case 1: System.out.println("8分");break;
+						     case 2: System.out.println("6分");break;
+						     case 3: System.out.println("4分");break;
+						     case 4: System.out.println("2分");break;
+						     default :System.out.println("0分");
+						     }
+                        }else if(k==3){
+	                         int diff3=Math.abs(a[2]-n3);
+						     System.out.println("差"+diff3);
+						     switch(diff3){
+						     case 0: System.out.println("10分");break;
+						     case 1: System.out.println("8分");break;
+						     case 2: System.out.println("6分");break;
+						     case 3: System.out.println("4分");break;
+						     case 4: System.out.println("2分");break;
+						     default :System.out.println("0分");
+						     }
+                       }
+                        
                      }
                  }
              }
          });
          
      }
-
      
+    
 
 
      final JLabel label = new JLabel("Hello World");
@@ -75,6 +113,8 @@ public class Main extends JFrame implements ActionListener {
      for(int i = 0; i < 12; i++) {
     	 panel.add(buttons[i]);
      }    
+     
+     
      
      JLabel ques = new JLabel("三個音:" + n1 + ' ' + n2 + ' ' + n3);
      JLabel ans = new JLabel("ans:" + a[0] + ' ' + a[1] + ' ' + a[2]);
@@ -98,10 +138,6 @@ public class Main extends JFrame implements ActionListener {
 	
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

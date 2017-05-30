@@ -19,6 +19,7 @@ public class Main extends JFrame implements ActionListener {
 	static int score1 = 0;
 	static int score2 = 0;
 	static int score3 = 0;
+	static int total = 0;
 
 	public static void main(String args[]) {
 		Random rand = new Random();
@@ -32,10 +33,13 @@ public class Main extends JFrame implements ActionListener {
 
 		JPanel panel = new JPanel();
 		frame.add(panel);
+		
+		JLabel ques = new JLabel("三個音:" + n1 + ' ' + n2 + ' ' + n3);
+		panel.add(ques);
+		ques.setVisible(true);
 
 		JButton buttons[];
 		buttons = new JButton[12];
-		JButton button1 = new JButton();
 		int[] a = new int[3];
 
 		JLabel labans[];
@@ -44,14 +48,10 @@ public class Main extends JFrame implements ActionListener {
 		labans[1] = new JLabel("");
 		labans[2] = new JLabel("");
 
-		for (int i = 0; i < 3; i++) {
-			panel.add(labans[i]);
-		}
-
 		for (int i = 0; i < 12; i++) {
 			buttons[i] = new JButton(String.valueOf(i + 1));
 			buttons[i].setActionCommand(String.valueOf(i + 1));
-
+			panel.add(buttons[i]);
 			buttons[i].addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
@@ -149,41 +149,26 @@ public class Main extends JFrame implements ActionListener {
 									System.out.println("0分");
 								}
 							}
-							
-
 						}
+						
+
 					}
+					total = score1 + score2 + score3;
+					JLabel ans = new JLabel("\n總分"+ total );
+					panel.add(ans);
+					
 				}
 			});
 
 		}
-
-		final JLabel label = new JLabel("Hello World");
-		label.setVisible(false);
-
-		panel.add(button1);
-		for (int i = 0; i < 12; i++) {
-			panel.add(buttons[i]);
+		//showing the answer
+		for (int i = 0; i < 3; i++) {
+			panel.add(labans[i]);
 		}
-		int total = score1 + score2 + score3;
-		
-		JLabel ques = new JLabel("三個音:" + n1 + ' ' + n2 + ' ' + n3);
-		JLabel ans = new JLabel("ans:" + a[0] + ' ' + a[1] + ' ' + a[2] +"\n總分"+ total );
 
-		panel.add(label);
-		panel.add(ques);
-		panel.add(ans);
-		ques.setVisible(true);
 		frame.setVisible(true);
 
-		button1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// JOptionPane.showMessageDialog(frame.getComponent(0), "Hello
-				// World");
-				label.setVisible(true);
 
-			}
-		});
 
 	}
 

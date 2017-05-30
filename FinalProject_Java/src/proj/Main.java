@@ -9,7 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class Main extends JFrame implements ActionListener {
-	
+	protected static int k=0;
+
+
 	public static void main(String args[]) {
 	Random rand = new Random();
 	int n1 = rand.nextInt(12) + 1;
@@ -31,9 +33,9 @@ public class Main extends JFrame implements ActionListener {
     JLabel labans[];
     labans = new JLabel[5];
  
-    labans[0] = new JLabel("hi");
-    labans[1] = new JLabel("..");
-    labans[2] = new JLabel("...");
+    labans[0] = new JLabel("");
+    labans[1] = new JLabel("");
+    labans[2] = new JLabel("");
 
     
     for(int i = 0; i < 3; i++) {
@@ -49,14 +51,13 @@ public class Main extends JFrame implements ActionListener {
              public void actionPerformed(ActionEvent e) {
                  for (int j = 0; j < 12; j++) {
                      if (e.getSource() == buttons[j]) {
-                    	 int k=0;
-                    	 
+                    	                     	 
                     	 System.out.println(k);
                          a[k] = j+1;
-                         JOptionPane.showMessageDialog(null, (a[k]));
-                         labans[k].setText(k+':'+String.valueOf(a[k]));
-                        labans[k].setVisible(true);
-                        k=k+1;
+                  //       JOptionPane.showMessageDialog(null, (a[k]));
+                         labans[k].setText("²Ä"+k+"­Óµª®×:"+String.valueOf(a[k]));
+                    //    labans[k].setVisible(true);
+                        ++k;
                      }
                  }
              }

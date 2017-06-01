@@ -61,93 +61,21 @@ public class Main extends JFrame implements ActionListener {
 							// System.out.println(k);
 							a[k] = j + 1;
 							// JOptionPane.showMessageDialog(null, (a[k]));
-							labans[k].setText("第" + k + "個答案:" + String.valueOf(a[k]));
+							labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
 							// labans[k].setVisible(true);
 							++k;
 							if (k == 1) {
 								int diff1 = Math.abs(a[0] - n1);
-//								int score1 = 0;
-								System.out.println("差" + diff1);
-								switch (diff1) {
-								case 0:
-									System.out.println("10分");
-									score1 = 10;
-									break;
-								case 1:
-									System.out.println("8分");
-									score1 = 8;
-									break;
-								case 2:
-									System.out.println("6分");
-									score1 = 6;
-									break;
-								case 3:
-									System.out.println("4分");
-									score1 = 4;
-									break;
-								case 4:
-									System.out.println("2分");
-									score1 = 2;
-									break;
-								default:
-									System.out.println("0分");
-								}
+								score1 = Score.each(diff1);
+								
 							} else if (k == 2) {
 								int diff2 = Math.abs(a[1] - n2);
-//								int score2 = 0;
-								System.out.println("差" + diff2);
-								switch (diff2) {
-								case 0:
-									System.out.println("10分");
-									score2 = 10;
-									break;
-								case 1:
-									System.out.println("8分");
-									score2 = 8;
-									break;
-								case 2:
-									System.out.println("6分");
-									score2 = 6;
-									break;
-								case 3:
-									System.out.println("4分");
-									score2 = 4;
-									break;
-								case 4:
-									System.out.println("2分");
-									score2 = 2;
-									break;
-								default:
-									System.out.println("0分");
-								}
+								score2 = Score.each(diff2);
+
 							} else if (k == 3) {
 								int diff3 = Math.abs(a[2] - n3);
-//								int score3 = 0;
-								System.out.println("差" + diff3);
-								switch (diff3) {
-								case 0:
-									System.out.println("10分");
-									score3 = 10;
-									break;
-								case 1:
-									System.out.println("8分");
-									score3 = 8;
-									break;
-								case 2:
-									System.out.println("6分");
-									score3 = 6;
-									break;
-								case 3:
-									System.out.println("4分");
-									score3 = 4;
-									break;
-								case 4:
-									System.out.println("2分");
-									score3 = 2;
-									break;
-								default:
-									System.out.println("0分");
-								}
+								score3 = Score.each(diff3);
+
 							}
 						}
 						

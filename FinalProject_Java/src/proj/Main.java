@@ -54,9 +54,7 @@ public class Main extends JFrame implements ActionListener {
 		panel.add(ques);
 		ques.setVisible(true);
 
-		JButton buttons[];
-		buttons = new JButton[13];
-		int[] a = new int[3];
+		int[] a = new int[3]; //save the answer
 
 		JLabel labans[];
 		labans = new JLabel[5];
@@ -64,7 +62,11 @@ public class Main extends JFrame implements ActionListener {
 		labans[1] = new JLabel("");
 		labans[2] = new JLabel("");
 		
+		JButton replay = new JButton("Replay");
+		panel.add(replay);
 		
+		JButton buttons[];
+		buttons = new JButton[13];
 		for (int i = 0; i < 13; i++) {
 			buttons[i] = new JButton(String.valueOf(i + 1));
 			buttons[i].setActionCommand(String.valueOf(i + 1));
@@ -79,7 +81,6 @@ public class Main extends JFrame implements ActionListener {
 							a[k] = j + 1;
 							// JOptionPane.showMessageDialog(null, (a[k]));
 							labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
-							// labans[k].setVisible(true);
 							++k;
 							if (k == 1) {
 								int diff1 = Math.abs(a[0] - n1);
@@ -115,7 +116,14 @@ public class Main extends JFrame implements ActionListener {
 		}
 
 		frame.setVisible(true);
+		
 		PlaySound.question(n1,n2,n3);
+		replay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PlaySound.question(n1,n2,n3);
+			}
+		});
+		
 
 	}
 

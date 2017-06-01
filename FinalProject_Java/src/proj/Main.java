@@ -39,9 +39,9 @@ public class Main extends JFrame implements ActionListener {
 
 	public static void main(String args[]) {
 		Random rand = new Random();
-		int n1 = rand.nextInt(13) + 1;
-		int n2 = rand.nextInt(13) + 1;
-		int n3 = rand.nextInt(13) + 1;
+		int n1 = rand.nextInt(13);
+		int n2 = rand.nextInt(13);
+		int n3 = rand.nextInt(13);
 		
 		final JFrame frame = new JFrame();
 		frame.setSize(500, 500);
@@ -68,8 +68,8 @@ public class Main extends JFrame implements ActionListener {
 		JButton buttons[];
 		buttons = new JButton[13];
 		for (int i = 0; i < 13; i++) {
-			buttons[i] = new JButton(String.valueOf(i + 1));
-			buttons[i].setActionCommand(String.valueOf(i + 1));
+			buttons[i] = new JButton(String.valueOf(i));
+			buttons[i].setActionCommand(String.valueOf(i));
 			panel.add(buttons[i]);
 			buttons[i].addActionListener(new ActionListener() {
 
@@ -78,21 +78,24 @@ public class Main extends JFrame implements ActionListener {
 						if (e.getSource() == buttons[j]) {
 
 							// System.out.println(k);
-							a[k] = j + 1;
+							a[k] = j;
 							// JOptionPane.showMessageDialog(null, (a[k]));
 							labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
 							++k;
 							if (k == 1) {
 								int diff1 = Math.abs(a[0] - n1);
 								score1 = Score.each(diff1);
+								PlaySound.ha(j);
 								
 							} else if (k == 2) {
 								int diff2 = Math.abs(a[1] - n2);
 								score2 = Score.each(diff2);
-
+								PlaySound.lo(j);
 							} else if (k == 3) {
 								int diff3 = Math.abs(a[2] - n3);
 								score3 = Score.each(diff3);
+								PlaySound.world(j);
+								
 								total = score1 + score2 + score3;
 								JLabel ans = new JLabel("\nÁ`¤À"+ total );
 								panel.add(ans);

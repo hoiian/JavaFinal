@@ -19,6 +19,9 @@ public class Main extends JFrame implements ActionListener {
 	static int score1 = 0;
 	static int score2 = 0;
 	static int score3 = 0;
+	static int ans1 = 0;
+	static int ans2 = 0;
+	static int ans3 = 0;
 	static int total = 0;
 
 	public static void main(String args[]) {
@@ -47,7 +50,153 @@ public class Main extends JFrame implements ActionListener {
 		labans[0] = new JLabel("");
 		labans[1] = new JLabel("");
 		labans[2] = new JLabel("");
-
+		
+		JButton C  = new JButton("C");
+		JButton C1  = new JButton("C1");
+		JButton D  = new JButton("D");
+		JButton D1  = new JButton("D1");
+		JButton E  = new JButton("E");
+		JButton F  = new JButton("F");
+		JButton F1  = new JButton("F1");
+		JButton G  = new JButton("G");
+		JButton G1  = new JButton("G1");
+		JButton A  = new JButton("A");
+		JButton A1  = new JButton("A1");
+		JButton B  = new JButton("B");
+		JButton CC  = new JButton("CC");
+		
+		C.setActionCommand("1");
+		C1.setActionCommand("2");
+		D.setActionCommand("3");
+		D1.setActionCommand("4");
+		E.setActionCommand("5");
+		F.setActionCommand("6");
+		F1.setActionCommand("7");
+		G.setActionCommand("8");
+		G1.setActionCommand("9");
+		A.setActionCommand("10");
+		A1.setActionCommand("11");
+		B.setActionCommand("12");
+		CC.setActionCommand("13");
+		
+		C.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 1;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		C1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 2;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		D.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 3;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		D1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 4;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		E.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 5;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		F.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 6;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		F1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 7;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		G.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 8;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		G1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 9;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		A.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 10;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		A1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 11;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		B.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 12;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		CC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a[k] = 13;
+				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				++k;
+			}
+		});
+		
+		panel.add(C);
+		panel.add(C1);
+		panel.add(D);
+		panel.add(D1);
+		panel.add(E);
+		panel.add(F);
+		panel.add(F1);
+		panel.add(G);
+		panel.add(G1);
+		panel.add(A);
+		panel.add(A1);
+		panel.add(B);
+		panel.add(CC);
+		
 		for (int i = 0; i < 12; i++) {
 			buttons[i] = new JButton(String.valueOf(i + 1));
 			buttons[i].setActionCommand(String.valueOf(i + 1));

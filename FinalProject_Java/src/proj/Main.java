@@ -23,12 +23,17 @@ public class Main extends JFrame implements ActionListener {
 	static int ans2 = 0;
 	static int ans3 = 0;
 	static int total = 0;
+	static int diff1 = 0;
+	static int diff2 = 0;
+	static int diff3 = 0;
+	
+
 
 	public static void main(String args[]) {
 		Random rand = new Random();
-		int n1 = rand.nextInt(12) + 1;
-		int n2 = rand.nextInt(12) + 1;
-		int n3 = rand.nextInt(12) + 1;
+		int n1 = rand.nextInt(13) + 1;
+		int n2 = rand.nextInt(13) + 1;
+		int n3 = rand.nextInt(13) + 1;
 
 		final JFrame frame = new JFrame();
 		frame.setSize(500, 500);
@@ -51,6 +56,7 @@ public class Main extends JFrame implements ActionListener {
 		labans[1] = new JLabel("");
 		labans[2] = new JLabel("");
 		
+		/*
 		JButton C  = new JButton("C");
 		JButton C1  = new JButton("C1");
 		JButton D  = new JButton("D");
@@ -83,6 +89,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 1;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -91,6 +103,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 2;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -99,6 +117,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 3;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -107,6 +131,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 4;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -115,6 +145,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 5;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -123,6 +159,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 6;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -131,6 +173,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 7;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -139,6 +187,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 8;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -147,6 +201,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 9;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -155,6 +215,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 10;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -163,6 +229,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 11;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -171,6 +243,12 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 12;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
@@ -179,9 +257,28 @@ public class Main extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				a[k] = 13;
 				labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+				
+				switch(k){
+				case 0: diff1 = Math.abs(a[0] - n1); break;
+				case 1:	diff2 = Math.abs(a[1] - n2); break;
+				case 2:	diff2 = Math.abs(a[2] - n3); break;
+				}
 				++k;
 			}
 		});
+		
+		if(k==2){
+//		int diff1 = Math.abs(a[0] - n1);
+		score1 = Score.each(diff1);
+//		int diff2 = Math.abs(a[1] - n2);
+		score2 = Score.each(diff2);
+//		int diff3 = Math.abs(a[2] - n3);
+		score3 = Score.each(diff3);
+		
+		total = score1 + score2 + score3;
+		JLabel ans = new JLabel("\n總分"+ total );
+		panel.add(ans);
+		}
 		
 		panel.add(C);
 		panel.add(C1);
@@ -196,6 +293,8 @@ public class Main extends JFrame implements ActionListener {
 		panel.add(A1);
 		panel.add(B);
 		panel.add(CC);
+		
+		*/
 		
 		for (int i = 0; i < 12; i++) {
 			buttons[i] = new JButton(String.valueOf(i + 1));
@@ -224,20 +323,22 @@ public class Main extends JFrame implements ActionListener {
 							} else if (k == 3) {
 								int diff3 = Math.abs(a[2] - n3);
 								score3 = Score.each(diff3);
-
+								total = score1 + score2 + score3;
+								JLabel ans = new JLabel("\n總分"+ total );
+								panel.add(ans);
 							}
 						}
 						
 
 					}
-					total = score1 + score2 + score3;
-					JLabel ans = new JLabel("\n總分"+ total );
-					panel.add(ans);
+
 					
 				}
 			});
 
 		}
+		
+		
 		//showing the answer
 		for (int i = 0; i < 3; i++) {
 			panel.add(labans[i]);

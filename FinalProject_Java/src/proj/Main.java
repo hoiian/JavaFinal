@@ -27,14 +27,18 @@ public class Main extends JFrame implements ActionListener {
 	static int score1 = 0;
 	static int score2 = 0;
 	static int score3 = 0;
+	static int score1b = 0;
+	static int score2b = 0;
+	static int score3b = 0;
 	static int ans1 = 0;
 	static int ans2 = 0;
 	static int ans3 = 0;
 	static int total = 0;
+	static int totalb = 0;
 	static int diff1 = 0;
 	static int diff2 = 0;
 	static int diff3 = 0;
-	AudioClip[] m_AudioClip=new AudioClip[14];
+//	AudioClip[] m_AudioClip=new AudioClip[14];
 
 
 	public static void main(String args[]) {
@@ -54,13 +58,14 @@ public class Main extends JFrame implements ActionListener {
 		panel.add(ques);
 		ques.setVisible(true);
 
-		int[] a = new int[3]; //save the answer
+		int[] a = new int[7]; //save the answer
 
 		JLabel labans[];
-		labans = new JLabel[5];
-		labans[0] = new JLabel("");
-		labans[1] = new JLabel("");
-		labans[2] = new JLabel("");
+		labans = new JLabel[6];
+		
+		for(int i=0; i<6; i++){
+			labans[i] = new JLabel("");
+		}
 		
 		JButton replay = new JButton("Replay");
 		panel.add(replay);
@@ -82,23 +87,44 @@ public class Main extends JFrame implements ActionListener {
 							// JOptionPane.showMessageDialog(null, (a[k]));
 							labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
 							++k;
-							if (k == 1) {
+							switch(k){
+							case 1:
 								int diff1 = Math.abs(a[0] - n1);
 								score1 = Score.each(diff1);
 								PlaySound.ha(j);
-								
-							} else if (k == 2) {
+								break;
+							case 2:
 								int diff2 = Math.abs(a[1] - n2);
 								score2 = Score.each(diff2);
 								PlaySound.lo(j);
-							} else if (k == 3) {
+								break;
+							case 3:
 								int diff3 = Math.abs(a[2] - n3);
 								score3 = Score.each(diff3);
 								PlaySound.world(j);
 								
 								total = score1 + score2 + score3;
-								JLabel ans = new JLabel("\n總分"+ total );
+								JLabel ans = new JLabel("\nP1總分"+ total );
 								panel.add(ans);
+								break;
+							case 4:
+								int diff1b = Math.abs(a[3] - n1);
+								score1b = Score.each(diff1b);
+								PlaySound.ha(j);
+								break;
+							case 5:
+								int diff2b = Math.abs(a[4] - n2);
+								score1b = Score.each(diff2b);
+								PlaySound.lo(j);
+								break;
+							case 6:
+								int diff3b = Math.abs(a[5] - n3);
+								score1b = Score.each(diff3b);
+								PlaySound.world(j);
+								totalb = score1b + score2b + score3b;
+								JLabel ansb = new JLabel("\nP2總分"+ total );
+								panel.add(ansb);
+								break;
 							}
 						}
 						
@@ -114,7 +140,7 @@ public class Main extends JFrame implements ActionListener {
 		
 		
 		//showing the answer
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 6; i++) {
 			panel.add(labans[i]);
 		}
 

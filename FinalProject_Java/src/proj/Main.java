@@ -15,6 +15,7 @@ import sun.audio.*;
 import java.io.*;
 import java.io.FileInputStream;
 
+
 public class Main extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -36,35 +37,12 @@ public class Main extends JFrame implements ActionListener {
 	AudioClip[] m_AudioClip=new AudioClip[14];
 
 	
-	public static void play(String Filename){
 
-		try {
-			InputStream in = new FileInputStream(Filename);
-			AudioStream as = new AudioStream(in);
-			AudioPlayer.player.start(as);
-		} catch (FileNotFoundException e) {
-			System.out.print("FileNotFoundException ");
-		} catch (IOException e) {
-			System.out.print("¦³¿ù»~¡I");
-		}
-	}
 	public static void main(String args[]) {
 		Random rand = new Random();
 		int n1 = rand.nextInt(13) + 1;
 		int n2 = rand.nextInt(13) + 1;
 		int n3 = rand.nextInt(13) + 1;
-		/*
-		try {
-			URL url = new URL("http://billor.chsh.chc.edu.tw/sound/ccheer.wav");
-			AudioClip ac = Applet.getAudioClip(url);
-			ac.play();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		*/
-		
-		play("src/proj/sound/wav_H/H_a4.wav");
-		
 		
 		final JFrame frame = new JFrame();
 		frame.setSize(500, 500);
@@ -86,6 +64,7 @@ public class Main extends JFrame implements ActionListener {
 		labans[0] = new JLabel("");
 		labans[1] = new JLabel("");
 		labans[2] = new JLabel("");
+		
 		
 		/*
 		JButton C  = new JButton("C");
@@ -327,6 +306,7 @@ public class Main extends JFrame implements ActionListener {
 		
 		*/
 		
+		
 		for (int i = 0; i < 13; i++) {
 			buttons[i] = new JButton(String.valueOf(i + 1));
 			buttons[i].setActionCommand(String.valueOf(i + 1));
@@ -370,13 +350,14 @@ public class Main extends JFrame implements ActionListener {
 		}
 		
 		
+		
 		//showing the answer
 		for (int i = 0; i < 3; i++) {
 			panel.add(labans[i]);
 		}
 
 		frame.setVisible(true);
-
+		PlaySound.question(n1,n2,n3);
 
 
 	}

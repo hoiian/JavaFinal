@@ -7,6 +7,13 @@ import java.awt.Frame;
 import java.awt.event.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.applet.*;
+//import java.applet.Applet;
+//import java.applet.AudioClip;
+//import java.net.URL;
+import sun.audio.*;
+import java.io.*;
+import java.io.FileInputStream;
 
 public class Main extends JFrame implements ActionListener {
 	@Override
@@ -26,15 +33,39 @@ public class Main extends JFrame implements ActionListener {
 	static int diff1 = 0;
 	static int diff2 = 0;
 	static int diff3 = 0;
+	AudioClip[] m_AudioClip=new AudioClip[14];
+
 	
+	public static void play(String Filename){
 
-
+		try {
+			InputStream in = new FileInputStream(Filename);
+			AudioStream as = new AudioStream(in);
+			AudioPlayer.player.start(as);
+		} catch (FileNotFoundException e) {
+			System.out.print("FileNotFoundException ");
+		} catch (IOException e) {
+			System.out.print("¦³¿ù»~¡I");
+		}
+	}
 	public static void main(String args[]) {
 		Random rand = new Random();
 		int n1 = rand.nextInt(13) + 1;
 		int n2 = rand.nextInt(13) + 1;
 		int n3 = rand.nextInt(13) + 1;
-
+		/*
+		try {
+			URL url = new URL("http://billor.chsh.chc.edu.tw/sound/ccheer.wav");
+			AudioClip ac = Applet.getAudioClip(url);
+			ac.play();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		*/
+		
+		play("src/proj/sound/wav_H/H_a4.wav");
+		
+		
 		final JFrame frame = new JFrame();
 		frame.setSize(500, 500);
 		frame.setVisible(true);
@@ -47,7 +78,7 @@ public class Main extends JFrame implements ActionListener {
 		ques.setVisible(true);
 
 		JButton buttons[];
-		buttons = new JButton[12];
+		buttons = new JButton[13];
 		int[] a = new int[3];
 
 		JLabel labans[];
@@ -296,14 +327,14 @@ public class Main extends JFrame implements ActionListener {
 		
 		*/
 		
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < 13; i++) {
 			buttons[i] = new JButton(String.valueOf(i + 1));
 			buttons[i].setActionCommand(String.valueOf(i + 1));
 			panel.add(buttons[i]);
 			buttons[i].addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
-					for (int j = 0; j < 12; j++) {
+					for (int j = 0; j < 13; j++) {
 						if (e.getSource() == buttons[j]) {
 
 							// System.out.println(k);

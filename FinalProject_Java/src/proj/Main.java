@@ -15,7 +15,6 @@ import sun.audio.*;
 import java.io.*;
 import java.io.FileInputStream;
 
-
 public class Main extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -38,59 +37,59 @@ public class Main extends JFrame implements ActionListener {
 	static int diff1 = 0;
 	static int diff2 = 0;
 	static int diff3 = 0;
-	
-//	AudioClip[] m_AudioClip=new AudioClip[14];
 
+	// AudioClip[] m_AudioClip=new AudioClip[14];
 
-	public static void main(String args[]) {
+	public static void game() {
 		Random rand = new Random();
 		int n1 = rand.nextInt(13);
 		int n2 = rand.nextInt(13);
 		int n3 = rand.nextInt(13);
-		
+
 		final JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(900, 500);
-	//	frame.setVisible(true);
+		// frame.setVisible(true);
 
 		JPanel panel = new JPanel();
 		frame.add(panel);
 		panel.setLayout(null);
-		
-		JLabel ques = new JLabel("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
-		//panel.add(ques);
-		//ques.setVisible(true);
 
-		int[] a = new int[7]; //save the answer
+		JLabel ques = new JLabel("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
+		// panel.add(ques);
+		// ques.setVisible(true);
+
+		int[] a = new int[7]; // save the answer
 
 		JLabel labans[];
 		labans = new JLabel[6];
-		
-		for(int i=0; i<6; i++){
+
+		for (int i = 0; i < 6; i++) {
 			labans[i] = new JLabel("");
 		}
-		
+
 		JButton replay = new JButton("重");
 		panel.add(replay);
-		replay.setBounds(50,300,50,100);
-		
+		replay.setBounds(50, 300, 50, 100);
+
 		JLabel dartlabel;
 		ImageIcon dart = new ImageIcon("src/proj/img/dart.jpg");
 		dartlabel = new JLabel(dart);
 		dartlabel.setVisible(true);
 		panel.add(dartlabel);
-		dartlabel.setBounds(200,200,50,50);
-		
+		dartlabel.setBounds(200, 200, 50, 50);
+
 		JButton buttons[];
 		buttons = new JButton[13];
 		for (int i = 0; i < 13; i++) {
 			buttons[i] = new JButton(Score.note(i));
 			buttons[i].setActionCommand(Score.note(i));
 			panel.add(buttons[i]);
-			buttons[i].setBounds(150+i*50, 300, 50, 100);
-			
-			buttons[i].addActionListener(new ActionListener() {
+			buttons[i].setBounds(150 + i * 50, 300, 50, 100);
+		}
 
+		for (int i = 0; i < 13; i++) {
+			buttons[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					for (int j = 0; j < 13; j++) {
 						if (e.getSource() == buttons[j]) {
@@ -100,12 +99,12 @@ public class Main extends JFrame implements ActionListener {
 							// JOptionPane.showMessageDialog(null, (a[k]));
 							labans[k].setText(Score.note(a[k]));
 							++k;
-							switch(k){
+							switch (k) {
 							case 1:
 								int diff1 = Math.abs(a[0] - n1);
 								score1 = Score.each(diff1);
 								PlaySound.ha(j);
-								
+								Dart.move(dartlabel);
 								break;
 							case 2:
 								int diff2 = Math.abs(a[1] - n2);
@@ -116,10 +115,11 @@ public class Main extends JFrame implements ActionListener {
 								int diff3 = Math.abs(a[2] - n3);
 								score3 = Score.each(diff3);
 								PlaySound.world(j);
-								
+
 								total = score1 + score2 + score3;
-								JLabel ans = new JLabel("\nP1總分"+ total );
+								JLabel ans = new JLabel("\nP1總分" + total);
 								panel.add(ans);
+								ans.setBounds(50, 110, 80, 80);
 								break;
 							case 4:
 								int diff1b = Math.abs(a[3] - n1);
@@ -136,9 +136,10 @@ public class Main extends JFrame implements ActionListener {
 								score3b = Score.each(diff3b);
 								PlaySound.world(j);
 								totalb = score1b + score2b + score3b;
-								JLabel ansb = new JLabel("\nP2總分"+ totalb );
+								JLabel ansb = new JLabel("\nP2總分" + totalb);
 								panel.add(ansb);
-								
+								ansb.setBounds(700, 110, 80, 80);
+
 								String winner = new String();
 								if (total > totalb) {
 									winner = "P1";
@@ -147,50 +148,47 @@ public class Main extends JFrame implements ActionListener {
 								} else {
 									winner = "P2";
 								}
-								JLabel winn = new JLabel("WINNER:"+ winner );
+								JLabel winn = new JLabel("WINNER:" + winner);
 								panel.add(winn);
-								winn.setBounds(400,150,100,100);
-								
+								winn.setBounds(400, 150, 100, 100);
+
 								panel.add(ques);
 								ques.setVisible(true);
-								ques.setBounds(400,100,100,100);
+								ques.setBounds(400, 100, 100, 100);
 								break;
 							}
 						}
-						
 
 					}
 
-					
 				}
 			});
 
 		}
-		
-		
-		
-		//showing the answer
+
+		// showing the answer
 		for (int i = 0; i < 6; i++) {
 			panel.add(labans[i]);
 		}
-		labans[0].setBounds(50,100,50,50);
-		labans[1].setBounds(80,100,50,50);
-		labans[2].setBounds(110,100,50,50);
-		labans[3].setBounds(700,100,50,50);
-		labans[4].setBounds(730,100,50,50);
-		labans[5].setBounds(760,100,50,50);
+		labans[0].setBounds(50, 100, 50, 50);
+		labans[1].setBounds(80, 100, 50, 50);
+		labans[2].setBounds(110, 100, 50, 50);
+		labans[3].setBounds(700, 100, 50, 50);
+		labans[4].setBounds(730, 100, 50, 50);
+		labans[5].setBounds(760, 100, 50, 50);
 
 		frame.setVisible(true);
-		
 
-		PlaySound.question(n1,n2,n3);
+		PlaySound.question(n1, n2, n3);
 		replay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PlaySound.question(n1,n2,n3);
+				PlaySound.question(n1, n2, n3);
 			}
 		});
-		
 
 	}
 
+	public static void main(String args[]) {
+		game();
+	}
 }

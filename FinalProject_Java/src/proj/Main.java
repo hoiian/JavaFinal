@@ -50,7 +50,7 @@ public class Main extends JFrame implements ActionListener {
 		
 		final JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800, 500);
+		frame.setSize(900, 500);
 	//	frame.setVisible(true);
 
 		JPanel panel = new JPanel();
@@ -70,15 +70,16 @@ public class Main extends JFrame implements ActionListener {
 			labans[i] = new JLabel("");
 		}
 		
-		JButton replay = new JButton("Replay");
+		JButton replay = new JButton("­«");
 		panel.add(replay);
+		replay.setBounds(50,300,50,100);
 		
 		JLabel dartlabel;
 		ImageIcon dart = new ImageIcon("src/proj/img/dart.jpg");
 		dartlabel = new JLabel(dart);
 		dartlabel.setVisible(true);
 		panel.add(dartlabel);
-		dartlabel.setBounds(200,200,100,100);
+		dartlabel.setBounds(200,200,50,50);
 		
 		JButton buttons[];
 		buttons = new JButton[13];
@@ -86,7 +87,7 @@ public class Main extends JFrame implements ActionListener {
 			buttons[i] = new JButton(Score.note(i));
 			buttons[i].setActionCommand(Score.note(i));
 			panel.add(buttons[i]);
-			buttons[i].setBounds(50+i*50, 200, 50, 100);
+			buttons[i].setBounds(150+i*50, 300, 50, 100);
 			
 			buttons[i].addActionListener(new ActionListener() {
 
@@ -97,13 +98,14 @@ public class Main extends JFrame implements ActionListener {
 							// System.out.println(k);
 							a[k] = j;
 							// JOptionPane.showMessageDialog(null, (a[k]));
-							labans[k].setText("ans" + (k+1) +":" + Score.note(a[k]));
+							labans[k].setText(Score.note(a[k]));
 							++k;
 							switch(k){
 							case 1:
 								int diff1 = Math.abs(a[0] - n1);
 								score1 = Score.each(diff1);
 								PlaySound.ha(j);
+								
 								break;
 							case 2:
 								int diff2 = Math.abs(a[1] - n2);
@@ -147,9 +149,11 @@ public class Main extends JFrame implements ActionListener {
 								}
 								JLabel winn = new JLabel("WINNER:"+ winner );
 								panel.add(winn);
+								winn.setBounds(400,150,100,100);
 								
 								panel.add(ques);
 								ques.setVisible(true);
+								ques.setBounds(400,100,100,100);
 								break;
 							}
 						}
@@ -169,18 +173,15 @@ public class Main extends JFrame implements ActionListener {
 		for (int i = 0; i < 6; i++) {
 			panel.add(labans[i]);
 		}
+		labans[0].setBounds(50,100,50,50);
+		labans[1].setBounds(80,100,50,50);
+		labans[2].setBounds(110,100,50,50);
+		labans[3].setBounds(700,100,50,50);
+		labans[4].setBounds(730,100,50,50);
+		labans[5].setBounds(760,100,50,50);
 
 		frame.setVisible(true);
 		
-		/*
-		for (int i = 0; i < 300; i++) {
-			dartlabel.setLocation(i, i);
-			try {
-				Thread.sleep(10);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}*/
 
 		PlaySound.question(n1,n2,n3);
 		replay.addActionListener(new ActionListener() {

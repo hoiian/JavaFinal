@@ -73,10 +73,34 @@ public class Main extends JFrame implements ActionListener {
 		//JPanel panel = new JPanel();
 		frame.add(panel);
 		panel.setLayout(null);
+		
+		JLabel ans = new JLabel("P1總分");
+		JLabel ansb = new JLabel("P2總分");
+		panel.add(ans);
+		panel.add(ansb);
+		ans.setBounds(50, 110, 80, 80);
+		ansb.setBounds(700, 110, 80, 80);
+		
+		JLabel winn = new JLabel("WINNER:");
+		panel.add(winn);
+		winn.setBounds(400, 150, 100, 100);
 
-		JLabel ques = new JLabel("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
-		// panel.add(ques);
-		//ques.setVisible(false);
+		JLabel ques = new JLabel("正確答案:");
+		panel.add(ques);
+		ques.setBounds(400, 100, 200, 100);
+		
+		
+		JButton replay = new JButton("聽");
+		panel.add(replay);
+		replay.setBounds(50, 300, 50, 100);
+
+		
+		JLabel dartlabel;
+		ImageIcon dart = new ImageIcon("src/proj/img/dart.jpg");
+		dartlabel = new JLabel(dart);
+		dartlabel.setVisible(false);
+		panel.add(dartlabel);
+		dartlabel.setBounds(200, 200, 50, 50);
 
 		int[] a = new int[7]; // save the answer
 
@@ -87,25 +111,7 @@ public class Main extends JFrame implements ActionListener {
 			labans[i] = new JLabel("");
 			a[i] = 0;
 		}
-		JLabel ans = new JLabel("P1總分");
-		JLabel ansb = new JLabel("P2總分");
-		panel.add(ans);
-		panel.add(ansb);
-		ans.setBounds(50, 110, 80, 80);
-		ansb.setBounds(700, 110, 80, 80);
 		
-		
-		JButton replay = new JButton("重");
-		panel.add(replay);
-		replay.setBounds(50, 300, 50, 100);
-
-		JLabel dartlabel;
-		ImageIcon dart = new ImageIcon("src/proj/img/dart.jpg");
-		dartlabel = new JLabel(dart);
-		dartlabel.setVisible(true);
-		panel.add(dartlabel);
-		dartlabel.setBounds(200, 200, 50, 50);
-
 		JButton buttons[];
 		buttons = new JButton[13];
 		for (int i = 0; i < 13; i++) {
@@ -177,13 +183,9 @@ public class Main extends JFrame implements ActionListener {
 								} else {
 									winner = "P2";
 								}
-								JLabel winn = new JLabel("WINNER:" + winner);
-								panel.add(winn);
-								winn.setBounds(400, 150, 100, 100);
-
-								panel.add(ques);
-								ques.setVisible(true);
-								ques.setBounds(400, 100, 100, 100);
+								
+								winn.setText("WINNER" + winner);
+								ques.setText("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
 								break;
 							}
 						}
@@ -218,7 +220,7 @@ public class Main extends JFrame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
-		JButton restart = new JButton("Restart");
+		JButton restart = new JButton("玩");
 		panel.add(restart);
 		restart.setBounds(30, 30, 50, 50);
 		game();

@@ -122,8 +122,19 @@ public class Main extends JFrame implements ActionListener {
 								score1b = Score.each(diff3b);
 								PlaySound.world(j);
 								totalb = score1b + score2b + score3b;
-								JLabel ansb = new JLabel("\nP2總分"+ total );
+								JLabel ansb = new JLabel("\nP2總分"+ totalb );
 								panel.add(ansb);
+								
+								String winner = new String();
+								if (total > totalb) {
+									winner = "P1";
+								} else if (total == totalb) {
+									winner = "平手";
+								} else {
+									winner = "P2";
+								}
+								JLabel winn = new JLabel("WINNER:"+ winner );
+								panel.add(winn);
 								break;
 							}
 						}

@@ -114,12 +114,12 @@ public class Main extends JFrame implements ActionListener {
 								break;
 							case 5:
 								int diff2b = Math.abs(a[4] - n2);
-								score1b = Score.each(diff2b);
+								score2b = Score.each(diff2b);
 								PlaySound.lo(j);
 								break;
 							case 6:
 								int diff3b = Math.abs(a[5] - n3);
-								score1b = Score.each(diff3b);
+								score3b = Score.each(diff3b);
 								PlaySound.world(j);
 								totalb = score1b + score2b + score3b;
 								JLabel ansb = new JLabel("\nP2Á`¤À"+ totalb );

@@ -38,6 +38,7 @@ public class Main extends JFrame implements ActionListener {
 	static int diff1 = 0;
 	static int diff2 = 0;
 	static int diff3 = 0;
+	
 //	AudioClip[] m_AudioClip=new AudioClip[14];
 
 
@@ -48,11 +49,13 @@ public class Main extends JFrame implements ActionListener {
 		int n3 = rand.nextInt(13);
 		
 		final JFrame frame = new JFrame();
-		frame.setSize(500, 500);
-		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(800, 500);
+	//	frame.setVisible(true);
 
 		JPanel panel = new JPanel();
 		frame.add(panel);
+		panel.setLayout(null);
 		
 		JLabel ques = new JLabel("¥¿½Tµª®×:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
 		//panel.add(ques);
@@ -70,12 +73,21 @@ public class Main extends JFrame implements ActionListener {
 		JButton replay = new JButton("Replay");
 		panel.add(replay);
 		
+		JLabel dartlabel;
+		ImageIcon dart = new ImageIcon("src/proj/img/dart.jpg");
+		dartlabel = new JLabel(dart);
+		dartlabel.setVisible(true);
+		panel.add(dartlabel);
+		dartlabel.setBounds(200,200,100,100);
+		
 		JButton buttons[];
 		buttons = new JButton[13];
 		for (int i = 0; i < 13; i++) {
 			buttons[i] = new JButton(Score.note(i));
 			buttons[i].setActionCommand(Score.note(i));
 			panel.add(buttons[i]);
+			buttons[i].setBounds(50+i*50, 200, 50, 100);
+			
 			buttons[i].addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
@@ -160,6 +172,16 @@ public class Main extends JFrame implements ActionListener {
 
 		frame.setVisible(true);
 		
+		/*
+		for (int i = 0; i < 300; i++) {
+			dartlabel.setLocation(i, i);
+			try {
+				Thread.sleep(10);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}*/
+
 		PlaySound.question(n1,n2,n3);
 		replay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -3,6 +3,7 @@ package proj;
 import java.util.Random;
 import javax.swing.*;
 
+import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.*;
 import javax.swing.JButton;
@@ -37,27 +38,45 @@ public class Main extends JFrame implements ActionListener {
 	static int diff1 = 0;
 	static int diff2 = 0;
 	static int diff3 = 0;
+	final static JFrame frame = new JFrame();
+	static JPanel panel = new JPanel();
 
 	// AudioClip[] m_AudioClip=new AudioClip[14];
 
 	public static void game() {
+		k = 0;
+		score1 = 0;
+		score2 = 0;
+		score3 = 0;
+		score1b = 0;
+		score2b = 0;
+		score3b = 0;
+		ans1 = 0;
+		ans2 = 0;
+		ans3 = 0;
+		//total = 0;
+		//totalb = 0;
+		diff1 = 0;
+		diff2 = 0;
+		diff3 = 0;
+		
 		Random rand = new Random();
 		int n1 = rand.nextInt(13);
 		int n2 = rand.nextInt(13);
 		int n3 = rand.nextInt(13);
 
-		final JFrame frame = new JFrame();
+		//final JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(900, 500);
 		// frame.setVisible(true);
 
-		JPanel panel = new JPanel();
+		//JPanel panel = new JPanel();
 		frame.add(panel);
 		panel.setLayout(null);
 
 		JLabel ques = new JLabel("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
 		// panel.add(ques);
-		// ques.setVisible(true);
+		//ques.setVisible(false);
 
 		int[] a = new int[7]; // save the answer
 
@@ -66,8 +85,16 @@ public class Main extends JFrame implements ActionListener {
 
 		for (int i = 0; i < 6; i++) {
 			labans[i] = new JLabel("");
+			a[i] = 0;
 		}
-
+		JLabel ans = new JLabel("P1總分");
+		JLabel ansb = new JLabel("P2總分");
+		panel.add(ans);
+		panel.add(ansb);
+		ans.setBounds(50, 110, 80, 80);
+		ansb.setBounds(700, 110, 80, 80);
+		
+		
 		JButton replay = new JButton("重");
 		panel.add(replay);
 		replay.setBounds(50, 300, 50, 100);
@@ -116,10 +143,11 @@ public class Main extends JFrame implements ActionListener {
 								score3 = Score.each(diff3);
 								PlaySound.world(j);
 
-								total = score1 + score2 + score3;
-								JLabel ans = new JLabel("\nP1總分" + total);
-								panel.add(ans);
-								ans.setBounds(50, 110, 80, 80);
+								total += score1 + score2 + score3;
+								//JLabel ans = new JLabel("\nP1總分" + total);
+								//panel.add(ans);
+								//ans.setBounds(50, 110, 80, 80);
+								ans.setText("\nP1總分" + total);
 								break;
 							case 4:
 								int diff1b = Math.abs(a[3] - n1);
@@ -135,10 +163,11 @@ public class Main extends JFrame implements ActionListener {
 								int diff3b = Math.abs(a[5] - n3);
 								score3b = Score.each(diff3b);
 								PlaySound.world(j);
-								totalb = score1b + score2b + score3b;
-								JLabel ansb = new JLabel("\nP2總分" + totalb);
-								panel.add(ansb);
-								ansb.setBounds(700, 110, 80, 80);
+								totalb += score1b + score2b + score3b;
+								//JLabel ansb = new JLabel("\nP2總分" + totalb);
+								//panel.add(ansb);
+								//ansb.setBounds(700, 110, 80, 80);
+								ansb.setText("\nP2總分" + totalb);
 
 								String winner = new String();
 								if (total > totalb) {
@@ -189,6 +218,14 @@ public class Main extends JFrame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
+		JButton restart = new JButton("Restart");
+		panel.add(restart);
+		restart.setBounds(30, 30, 50, 50);
 		game();
+		restart.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				game();
+			}
+		});
 	}
 }

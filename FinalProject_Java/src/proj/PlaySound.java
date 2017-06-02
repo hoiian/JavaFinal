@@ -43,37 +43,37 @@ public class PlaySound {
 	
 	public static void lo(int j){
 		switch(j){
-		case 0:play("src/proj/sound/wav_H/H_c4.wav");break;
-		case 1:play("src/proj/sound/wav_H/H_c41.wav");break;
-		case 2:play("src/proj/sound/wav_H/H_d4.wav");break;
-		case 3:play("src/proj/sound/wav_H/H_d41.wav");break;
-		case 4:play("src/proj/sound/wav_H/H_e4.wav");break;
-		case 5:play("src/proj/sound/wav_H/H_f4.wav");break;
-		case 6:play("src/proj/sound/wav_H/H_f41.wav");break;
-		case 7:play("src/proj/sound/wav_H/H_g4.wav");break;
-		case 8:play("src/proj/sound/wav_H/H_g41.wav");break;
-		case 9:play("src/proj/sound/wav_H/H_a4.wav");break;
-		case 10:play("src/proj/sound/wav_H/H_a41.wav");break;
-		case 11:play("src/proj/sound/wav_H/H_b4.wav");break;
-		case 12:play("src/proj/sound/wav_H/H_c5.wav");break;
+		case 0:play("src/proj/sound/wav_L/L_c4.wav");break;
+		case 1:play("src/proj/sound/wav_L/L_c41.wav");break;
+		case 2:play("src/proj/sound/wav_L/L_d4.wav");break;
+		case 3:play("src/proj/sound/wav_L/L_d41.wav");break;
+		case 4:play("src/proj/sound/wav_L/L_e4.wav");break;
+		case 5:play("src/proj/sound/wav_L/L_f4.wav");break;
+		case 6:play("src/proj/sound/wav_L/L_f41.wav");break;
+		case 7:play("src/proj/sound/wav_L/L_g4.wav");break;
+		case 8:play("src/proj/sound/wav_L/L_g41.wav");break;
+		case 9:play("src/proj/sound/wav_L/L_a4.wav");break;
+		case 10:play("src/proj/sound/wav_L/L_a41.wav");break;
+		case 11:play("src/proj/sound/wav_L/L_b4.wav");break;
+		case 12:play("src/proj/sound/wav_L/L_c5.wav");break;
 		}
 	}
 	
 	public static void world(int j){
 		switch(j){
-		case 0:play("src/proj/sound/wav_H/H_c4.wav");break;
-		case 1:play("src/proj/sound/wav_H/H_c41.wav");break;
-		case 2:play("src/proj/sound/wav_H/H_d4.wav");break;
-		case 3:play("src/proj/sound/wav_H/H_d41.wav");break;
-		case 4:play("src/proj/sound/wav_H/H_e4.wav");break;
-		case 5:play("src/proj/sound/wav_H/H_f4.wav");break;
-		case 6:play("src/proj/sound/wav_H/H_f41.wav");break;
-		case 7:play("src/proj/sound/wav_H/H_g4.wav");break;
-		case 8:play("src/proj/sound/wav_H/H_g41.wav");break;
-		case 9:play("src/proj/sound/wav_H/H_a4.wav");break;
-		case 10:play("src/proj/sound/wav_H/H_a41.wav");break;
-		case 11:play("src/proj/sound/wav_H/H_b4.wav");break;
-		case 12:play("src/proj/sound/wav_H/H_c5.wav");break;
+		case 0:play("src/proj/sound/wav_W/W_c4.wav");break;
+		case 1:play("src/proj/sound/wav_W/W_c41.wav");break;
+		case 2:play("src/proj/sound/wav_W/W_d4.wav");break;
+		case 3:play("src/proj/sound/wav_W/W_d41.wav");break;
+		case 4:play("src/proj/sound/wav_W/W_e4.wav");break;
+		case 5:play("src/proj/sound/wav_W/W_f4.wav");break;
+		case 6:play("src/proj/sound/wav_W/W_f41.wav");break;
+		case 7:play("src/proj/sound/wav_W/W_g4.wav");break;
+		case 8:play("src/proj/sound/wav_W/W_g41.wav");break;
+		case 9:play("src/proj/sound/wav_W/W_a4.wav");break;
+		case 10:play("src/proj/sound/wav_W/W_a41.wav");break;
+		case 11:play("src/proj/sound/wav_W/W_b4.wav");break;
+		case 12:play("src/proj/sound/wav_W/W_c5.wav");break;
 		}
 	}
 	

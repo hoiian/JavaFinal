@@ -55,8 +55,8 @@ public class Main extends JFrame implements ActionListener {
 		frame.add(panel);
 		
 		JLabel ques = new JLabel("¤T­Ó­µ:" + n1 + ' ' + n2 + ' ' + n3);
-		panel.add(ques);
-		ques.setVisible(true);
+		//panel.add(ques);
+		//ques.setVisible(true);
 
 		int[] a = new int[7]; //save the answer
 
@@ -135,6 +135,8 @@ public class Main extends JFrame implements ActionListener {
 								}
 								JLabel winn = new JLabel("WINNER:"+ winner );
 								panel.add(winn);
+								panel.add(ques);
+								ques.setVisible(true);
 								break;
 							}
 						}

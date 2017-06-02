@@ -83,7 +83,7 @@ public class PlaySound {
 		ha(n1);
 		
 		try{
-			Thread.sleep(1800);
+			Thread.sleep(1600);
 		}catch(InterruptedException e){
 			e.printStackTrace();
 		}
@@ -91,7 +91,7 @@ public class PlaySound {
 		lo(n2);
 		
 		try{
-			Thread.sleep(1800);
+			Thread.sleep(1600);
 		}catch(InterruptedException e){
 			e.printStackTrace();
 		}

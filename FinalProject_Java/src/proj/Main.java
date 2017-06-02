@@ -54,7 +54,7 @@ public class Main extends JFrame implements ActionListener {
 		JPanel panel = new JPanel();
 		frame.add(panel);
 		
-		JLabel ques = new JLabel("三個音:" + n1 + ' ' + n2 + ' ' + n3);
+		JLabel ques = new JLabel("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
 		//panel.add(ques);
 		//ques.setVisible(true);
 
@@ -73,8 +73,8 @@ public class Main extends JFrame implements ActionListener {
 		JButton buttons[];
 		buttons = new JButton[13];
 		for (int i = 0; i < 13; i++) {
-			buttons[i] = new JButton(String.valueOf(i));
-			buttons[i].setActionCommand(String.valueOf(i));
+			buttons[i] = new JButton(Score.note(i));
+			buttons[i].setActionCommand(Score.note(i));
 			panel.add(buttons[i]);
 			buttons[i].addActionListener(new ActionListener() {
 
@@ -85,7 +85,7 @@ public class Main extends JFrame implements ActionListener {
 							// System.out.println(k);
 							a[k] = j;
 							// JOptionPane.showMessageDialog(null, (a[k]));
-							labans[k].setText("ans" + (k+1) +":" + String.valueOf(a[k]));
+							labans[k].setText("ans" + (k+1) +":" + Score.note(a[k]));
 							++k;
 							switch(k){
 							case 1:
@@ -135,6 +135,7 @@ public class Main extends JFrame implements ActionListener {
 								}
 								JLabel winn = new JLabel("WINNER:"+ winner );
 								panel.add(winn);
+								
 								panel.add(ques);
 								ques.setVisible(true);
 								break;

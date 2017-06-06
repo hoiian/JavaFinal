@@ -3,6 +3,7 @@ package proj;
 import java.util.Random;
 import javax.swing.*;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.*;
@@ -67,32 +68,38 @@ public class Main extends JFrame implements ActionListener {
 
 		//final JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(900, 500);
+		frame.setSize(500, 700);
 		// frame.setVisible(true);
 
 		//JPanel panel = new JPanel();
 		frame.add(panel);
 		panel.setLayout(null);
 		
-		JLabel ans = new JLabel("P1總分");
-		JLabel ansb = new JLabel("P2總分");
+		JLabel ans = new JLabel(); //P1分
+		JLabel ansb = new JLabel(); //P2分
 		panel.add(ans);
 		panel.add(ansb);
 		ans.setBounds(50, 110, 80, 80);
-		ansb.setBounds(700, 110, 80, 80);
+		ansb.setBounds(400, 110, 80, 80);
 		
 		JLabel winn = new JLabel("WINNER:");
 		panel.add(winn);
-		winn.setBounds(400, 150, 100, 100);
+		winn.setBounds(200, 150, 100, 100);
 
 		JLabel ques = new JLabel("正確答案:");
 		panel.add(ques);
-		ques.setBounds(400, 100, 200, 100);
+		ques.setBounds(200, 100, 200, 100);
 		
-		
-		JButton replay = new JButton("聽");
+		ImageIcon rep = new ImageIcon("src/proj/img/p2-b1.png");
+		ImageIcon rep_f = new ImageIcon("src/proj/img/p2-b2.png");
+		JButton replay = new JButton(rep);
 		panel.add(replay);
-		replay.setBounds(50, 300, 50, 100);
+		replay.setBounds(43, 496,97, 97);
+		replay.setBorder(null);
+		replay.setBackground(null);
+		replay.setFocusPainted(false);
+		replay.setContentAreaFilled(false);
+
 
 		
 		JLabel dartlabel;
@@ -117,8 +124,15 @@ public class Main extends JFrame implements ActionListener {
 		for (int i = 0; i < 13; i++) {
 			buttons[i] = new JButton(Score.note(i));
 			buttons[i].setActionCommand(Score.note(i));
+			buttons[i].setBorder(null);
 			panel.add(buttons[i]);
-			buttons[i].setBounds(150 + i * 50, 300, 50, 100);
+			buttons[i].setBounds(50 + i * 30, 300, 30, 100);
+			if(i==1 || i==3 || i==6 || i==8 || i==10){
+				buttons[i].setBackground(Color.BLACK);
+			} else {
+				buttons[i].setBackground(Color.WHITE);
+			}
+			
 		}
 
 		for (int i = 0; i < 13; i++) {
@@ -137,7 +151,10 @@ public class Main extends JFrame implements ActionListener {
 								int diff1 = Math.abs(a[0] - n1);
 								score1 = Score.each(diff1);
 								PlaySound.ha(j);
-								Dart.move(dartlabel);
+								//Dart.move(dartlabel);
+								//if(score1==10){
+								//	buttons[j].setBackground(Color.green);
+								//}else buttons[j].setBackground(Color.red);
 								break;
 							case 2:
 								int diff2 = Math.abs(a[1] - n2);
@@ -153,7 +170,7 @@ public class Main extends JFrame implements ActionListener {
 								//JLabel ans = new JLabel("\nP1總分" + total);
 								//panel.add(ans);
 								//ans.setBounds(50, 110, 80, 80);
-								ans.setText("\nP1總分" + total);
+								ans.setText(Integer.toString(total)); //P1總分
 								break;
 							case 4:
 								int diff1b = Math.abs(a[3] - n1);
@@ -173,7 +190,7 @@ public class Main extends JFrame implements ActionListener {
 								//JLabel ansb = new JLabel("\nP2總分" + totalb);
 								//panel.add(ansb);
 								//ansb.setBounds(700, 110, 80, 80);
-								ansb.setText("\nP2總分" + totalb);
+								ansb.setText(Integer.toString(totalb));//P2總分
 
 								String winner = new String();
 								if (total > totalb) {
@@ -204,9 +221,9 @@ public class Main extends JFrame implements ActionListener {
 		labans[0].setBounds(50, 100, 50, 50);
 		labans[1].setBounds(80, 100, 50, 50);
 		labans[2].setBounds(110, 100, 50, 50);
-		labans[3].setBounds(700, 100, 50, 50);
-		labans[4].setBounds(730, 100, 50, 50);
-		labans[5].setBounds(760, 100, 50, 50);
+		labans[3].setBounds(400, 100, 50, 50);
+		labans[4].setBounds(430, 100, 50, 50);
+		labans[5].setBounds(460, 100, 50, 50);
 
 		frame.setVisible(true);
 

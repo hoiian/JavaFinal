@@ -16,6 +16,8 @@ import java.applet.*;
 import sun.audio.*;
 import java.io.*;
 import java.io.FileInputStream;
+import java.awt.Color;
+import java.awt.Font;
 
 public class Main extends JFrame implements ActionListener {
 	@Override
@@ -75,10 +77,19 @@ public class Main extends JFrame implements ActionListener {
 		frame.add(panel);
 		panel.setLayout(null);
 		
+		JLabel play1 = new JLabel("Player 1"); //P1分
+		JLabel play2 = new JLabel("Player 2"); //P2分
 		JLabel ans = new JLabel(); //P1分
 		JLabel ansb = new JLabel(); //P2分
+		panel.add(play1);
+		panel.add(play2);
 		panel.add(ans);
 		panel.add(ansb);
+		play1.setBounds(50, 90, 80, 80);
+		play1.setForeground(new Color(208 , 68, 2));
+		play1.setFont(new Font("Arial", Font.PLAIN, 16));
+		play2.setFont(new Font("Arial", Font.PLAIN, 16));
+		play2.setBounds(400, 90, 80, 80);
 		ans.setBounds(50, 110, 80, 80);
 		ansb.setBounds(400, 110, 80, 80);
 		
@@ -171,6 +182,8 @@ public class Main extends JFrame implements ActionListener {
 								//panel.add(ans);
 								//ans.setBounds(50, 110, 80, 80);
 								ans.setText(Integer.toString(total)); //P1總分
+								play1.setForeground(Color.black);
+								play2.setForeground(new Color(208 , 68, 2));
 								break;
 							case 4:
 								int diff1b = Math.abs(a[3] - n1);
@@ -218,12 +231,12 @@ public class Main extends JFrame implements ActionListener {
 		for (int i = 0; i < 6; i++) {
 			panel.add(labans[i]);
 		}
-		labans[0].setBounds(50, 100, 50, 50);
-		labans[1].setBounds(80, 100, 50, 50);
-		labans[2].setBounds(110, 100, 50, 50);
-		labans[3].setBounds(400, 100, 50, 50);
-		labans[4].setBounds(430, 100, 50, 50);
-		labans[5].setBounds(460, 100, 50, 50);
+		labans[0].setBounds(50, 70, 50, 50);
+		labans[1].setBounds(80, 70, 50, 50);
+		labans[2].setBounds(110, 70, 50, 50);
+		labans[3].setBounds(400, 70, 50, 50);
+		labans[4].setBounds(430, 70, 50, 50);
+		labans[5].setBounds(460, 70, 50, 50);
 
 		frame.setVisible(true);
 

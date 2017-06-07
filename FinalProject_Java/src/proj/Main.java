@@ -18,6 +18,7 @@ import java.io.*;
 import java.io.FileInputStream;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Container;
 
 public class Main extends JFrame implements ActionListener {
 	@Override
@@ -41,8 +42,12 @@ public class Main extends JFrame implements ActionListener {
 	static int diff1 = 0;
 	static int diff2 = 0;
 	static int diff3 = 0;
+	static int round = 1;
 	final static JFrame frame = new JFrame();
 	static JPanel panel = new JPanel();
+	
+	static JLabel ans = new JLabel("0"); //P1分
+	static JLabel ansb = new JLabel("0"); //P2分
 
 	// AudioClip[] m_AudioClip=new AudioClip[14];
 
@@ -79,8 +84,8 @@ public class Main extends JFrame implements ActionListener {
 		
 		JLabel play1 = new JLabel("Player 1"); //P1分
 		JLabel play2 = new JLabel("Player 2"); //P2分
-		JLabel ans = new JLabel(); //P1分
-		JLabel ansb = new JLabel(); //P2分
+	//	JLabel ans = new JLabel(); //P1分
+	//	JLabel ansb = new JLabel(); //P2分
 		panel.add(play1);
 		panel.add(play2);
 		panel.add(ans);
@@ -90,8 +95,10 @@ public class Main extends JFrame implements ActionListener {
 		play1.setFont(new Font("Arial", Font.PLAIN, 16));
 		play2.setFont(new Font("Arial", Font.PLAIN, 16));
 		play2.setBounds(400, 90, 80, 80);
-		ans.setBounds(50, 110, 80, 80);
-		ansb.setBounds(400, 110, 80, 80);
+		ans.setBounds(70, 130, 80, 80);
+		ansb.setBounds(420, 130, 80, 80);
+		ans.setFont(new Font("Arial", Font.PLAIN, 26));
+		ansb.setFont(new Font("Arial", Font.PLAIN, 26));
 		
 		JLabel winn = new JLabel("WINNER:");
 		panel.add(winn);
@@ -145,6 +152,20 @@ public class Main extends JFrame implements ActionListener {
 			}
 			
 		}
+		
+		JLabel win1label,win2label;
+		ImageIcon win1 = new ImageIcon("src/proj/img/p2-w1.png");
+		ImageIcon win2 = new ImageIcon("src/proj/img/p2-w2.png");
+		win1label = new JLabel(win1);
+		win2label = new JLabel(win2);
+		panel.add(win1label);
+		panel.add(win2label);
+		panel.setComponentZOrder(win1label, 0);
+		panel.setComponentZOrder(win2label, 0);
+		win1label.setVisible(false);
+		win2label.setVisible(false);
+		win1label.setBounds(0, 0, 500, 700);
+		win2label.setBounds(0, 0, 500, 700);
 
 		for (int i = 0; i < 13; i++) {
 			buttons[i].addActionListener(new ActionListener() {
@@ -214,8 +235,16 @@ public class Main extends JFrame implements ActionListener {
 									winner = "P2";
 								}
 								
-								winn.setText("WINNER" + winner);
-								ques.setText("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
+								if(round==3){
+									winn.setText("WINNER" + winner);
+									//ques.setText("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
+									if(winner.equals("P1")){
+										win1label.setVisible(true);
+									}else win2label.setVisible(true);
+									
+								}
+								round++;
+								
 								break;
 							}
 						}

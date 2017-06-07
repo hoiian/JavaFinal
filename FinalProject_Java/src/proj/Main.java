@@ -52,6 +52,7 @@ public class Main extends JFrame implements ActionListener {
 	// AudioClip[] m_AudioClip=new AudioClip[14];
 
 	public static void game() {
+
 		k = 0;
 		score1 = 0;
 		score2 = 0;
@@ -203,7 +204,7 @@ public class Main extends JFrame implements ActionListener {
 								//panel.add(ans);
 								//ans.setBounds(50, 110, 80, 80);
 								ans.setText(Integer.toString(total)); //P1總分
-								play1.setForeground(Color.black);
+								play1.setForeground(new Color(74 , 74, 74));
 								play2.setForeground(new Color(208 , 68, 2));
 								break;
 							case 4:
@@ -225,7 +226,9 @@ public class Main extends JFrame implements ActionListener {
 								//panel.add(ansb);
 								//ansb.setBounds(700, 110, 80, 80);
 								ansb.setText(Integer.toString(totalb));//P2總分
-
+								play1.setForeground(new Color(208 , 68, 2));
+								play2.setForeground(new Color(74 , 74, 74));
+								
 								String winner = new String();
 								if (total > totalb) {
 									winner = "P1";
@@ -243,6 +246,7 @@ public class Main extends JFrame implements ActionListener {
 									}else win2label.setVisible(true);
 									
 								}
+								if(round<3)	game();
 								round++;
 								
 								break;

@@ -79,6 +79,11 @@ public class PlaySound {
 	
 	
 	public static void question(int n1, int n2, int n3){
+		try {
+			Thread.sleep(3000);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 		
 		ha(n1);
 		

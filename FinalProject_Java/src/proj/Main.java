@@ -365,8 +365,7 @@ public class Main extends JFrame implements ActionListener {
 		
 		frame.setVisible(true);
 		
-		PlaySound.question(n1, n2, n3);
-	//	round1label.setVisible(false);
+	//	PlaySound.question(n1, n2, n3);
 		
 		replay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

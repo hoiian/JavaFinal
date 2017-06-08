@@ -51,6 +51,10 @@ public class Main extends JFrame implements ActionListener {
 	static JLabel ansb = new JLabel("0"); //P2¤À
 
 	// AudioClip[] m_AudioClip=new AudioClip[14];
+	public Main(){
+
+	}
+
 
 	public static void game() {
 
@@ -82,7 +86,7 @@ public class Main extends JFrame implements ActionListener {
 
 		//JPanel panel = new JPanel();
 		frame.add(panel);
-		frame.setContentPane(panel);
+	//	frame.setContentPane(panel);
 		panel.setLayout(null);
 	//	panel.setOpaque(false); 
 		JPanel imagePanel = null;
@@ -127,16 +131,18 @@ public class Main extends JFrame implements ActionListener {
 		JLabel winn = new JLabel("WINNER:");
 		panel.add(winn);
 		winn.setBounds(200, 150, 100, 100);
+		winn.setVisible(false);
 
 		JLabel ques = new JLabel("¥¿½Tµª®×:");
 		panel.add(ques);
 		ques.setBounds(200, 100, 200, 100);
+		ques.setVisible(false);
 		
 		ImageIcon rep = new ImageIcon("src/proj/img/p2-b1.png");
 		ImageIcon rep_f = new ImageIcon("src/proj/img/p2-b2.png");
 		JButton replay = new JButton(rep);
 		panel.add(replay);
-		replay.setBounds(37, 592,82, 82);
+		replay.setBounds(25, 570,82, 82);
 		replay.setBorder(null);
 		replay.setBackground(null);
 		replay.setFocusPainted(false);
@@ -167,6 +173,8 @@ public class Main extends JFrame implements ActionListener {
 			buttons[i] = new JButton(Score.note(i));
 			buttons[i].setActionCommand(Score.note(i));
 			buttons[i].setBorder(null);
+			buttons[i].setFocusPainted(false);
+			buttons[i].setContentAreaFilled(false);
 			panel.add(buttons[i]);
 			//buttons[i].setBounds(192 + i * 47, 574, 47, 122);
 			if(i==1 || i==3 || i==6 || i==8 || i==10){
@@ -179,46 +187,59 @@ public class Main extends JFrame implements ActionListener {
 				panel.setComponentZOrder(buttons[i], 9);
 			}
 		}
-			buttons[0].setLocation(129, 574);
-			buttons[2].setLocation(129+47, 574);
-			buttons[4].setLocation(129+2*47, 574);
-			buttons[5].setLocation(129+3*47, 574);
-			buttons[7].setLocation(129+4*47, 574);
-			buttons[9].setLocation(129+5*47, 574);
-			buttons[11].setLocation(129+6*47, 574);
-			buttons[12].setLocation(129+7*47, 574);
-			buttons[1].setLocation(160, 574);
-			buttons[3].setLocation(206, 574);
-			buttons[6].setLocation(295, 574);
-			buttons[8].setLocation(342, 574);
-			buttons[10].setLocation(388, 574);
+			buttons[0].setLocation(129, 548);
+			buttons[2].setLocation(129+47, 548);
+			buttons[4].setLocation(129+2*47, 548);
+			buttons[5].setLocation(129+3*47, 548);
+			buttons[7].setLocation(129+4*47, 548);
+			buttons[9].setLocation(129+5*47, 548);
+			buttons[11].setLocation(129+6*47, 548);
+			buttons[12].setLocation(129+7*47, 548);
+			buttons[1].setLocation(160, 548);
+			buttons[3].setLocation(206, 548);
+			buttons[6].setLocation(295, 548);
+			buttons[8].setLocation(342, 548);
+			buttons[10].setLocation(388, 548);
 
 		
-		JLabel win1label,win2label,winblabel,round1label;
+		JLabel win1label,win2label,winblabel,round1label,pialabel;
 		ImageIcon win1 = new ImageIcon("src/proj/img/p2-w1.png");
 		ImageIcon win2 = new ImageIcon("src/proj/img/p2-w2.png");
 		ImageIcon winb = new ImageIcon("src/proj/img/p2-w4.png");
 		ImageIcon round1 = new ImageIcon("src/proj/img/p2-r1.png");
+		ImageIcon piano = new ImageIcon("src/proj/img/p2-piano.png");
 		
 		win1label = new JLabel(win1);
 		win2label = new JLabel(win2);
-		winblabel = new JLabel(win2);
+		winblabel = new JLabel(winb);
 		round1label = new JLabel(round1);
-
-		panel.add(win1label);
-		panel.add(win2label);
-		panel.add(winblabel);
-		
-		panel.setComponentZOrder(win1label, 0);
-		panel.setComponentZOrder(win2label, 0);
-		panel.setComponentZOrder(winblabel, 0);
+		pialabel = new JLabel(piano);
 
 		win1label.setVisible(false);
 		win2label.setVisible(false);
 		winblabel.setVisible(false);
+		round1label.setVisible(true);
+		pialabel.setVisible(true);
+		
 		win1label.setBounds(0, 0, 525, 700);
 		win2label.setBounds(0, 0, 525, 700);
 		winblabel.setBounds(0, 0, 525, 700);
+		round1label.setBounds(0, 302, 525, 88);
+		pialabel.setBounds(129, 548, 371, 125);
+		
+		
+		panel.add(win1label);
+		panel.add(win2label);
+		panel.add(winblabel);
+		panel.add(round1label);
+		panel.add(pialabel);
+		
+		panel.setComponentZOrder(pialabel, 2);
+		panel.setComponentZOrder(win1label, 0);
+		panel.setComponentZOrder(win2label, 0);
+		panel.setComponentZOrder(winblabel, 0);
+		panel.setComponentZOrder(round1label, 0);
+		
 
 		for (int i = 0; i < 13; i++) {
 			buttons[i].addActionListener(new ActionListener() {
@@ -296,7 +317,7 @@ public class Main extends JFrame implements ActionListener {
 									if(winner.equals("P1"))
 									{
 										win1label.setVisible(true);
-									}else if(winner.equals("P1"))
+									}else if(winner.equals("P2"))
 									{
 										win2label.setVisible(true);
 									}else 
@@ -331,6 +352,8 @@ public class Main extends JFrame implements ActionListener {
 		frame.setVisible(true);
 
 		PlaySound.question(n1, n2, n3);
+		round1label.setVisible(false);
+		
 		replay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PlaySound.question(n1, n2, n3);

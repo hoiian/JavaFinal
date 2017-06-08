@@ -85,8 +85,9 @@ public class Dart {
 		dartlabel.setVisible(true);
 		dartlabel.setBounds(0,0,525,700);
 		panel.add(dartlabel);
+		panel.setComponentZOrder(dartlabel, 4);
 	}
-	
+	/*
 	public static void shoot(int score, JPanel panel){
 		
 		ImageIcon dart0 = new ImageIcon("src/proj/img/dart_+0.gif");
@@ -143,15 +144,5 @@ public class Dart {
 		dart8label.setVisible(false);
 		dart10label.setVisible(false);
 	}
-	
-	public static void move(JLabel obj){
-		for (int i = 0; i < 30; i++) {
-			obj.setBounds(200+i*10,200,(50-i),(50-i));
-			try {
-				Thread.sleep(10);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	*/
 }

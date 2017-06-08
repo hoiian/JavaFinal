@@ -79,10 +79,11 @@ public class PlaySound {
 	
 	
 	public static void question(int n1, int n2, int n3){
-		
+	
 		ha(n1);
 		
 		try{
+			Thread.currentThread();
 			Thread.sleep(1600);
 		}catch(InterruptedException e){
 			e.printStackTrace();
@@ -91,11 +92,13 @@ public class PlaySound {
 		lo(n2);
 		
 		try{
+			Thread.currentThread();
 			Thread.sleep(1600);
 		}catch(InterruptedException e){
 			e.printStackTrace();
 		}
 		
 		world(n3);
+		
 	}
 }

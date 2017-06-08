@@ -1,6 +1,7 @@
 package proj;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -118,7 +119,7 @@ public class Main extends JFrame implements ActionListener {
 		play2.setFont(new Font("Arial", Font.PLAIN, 16));
 		play2.setBounds(450, 410, 80, 80);
 		ans.setBounds(40, 450, 80, 80);
-		ansb.setBounds(480, 450, 80, 80);
+		ansb.setBounds(460, 450, 80, 80);
 		ans.setFont(new Font("Arial", Font.PLAIN, 26));
 		ansb.setFont(new Font("Arial", Font.PLAIN, 26));
 		
@@ -215,6 +216,13 @@ public class Main extends JFrame implements ActionListener {
 		
 		
 	//	Dart.disapear();
+		panel.setComponentZOrder(bgl, 5);
+		panel.setComponentZOrder(pialabel, 3);
+		panel.setComponentZOrder(play1, 1);
+		panel.setComponentZOrder(play2, 1);
+		panel.setComponentZOrder(ans, 1);
+		panel.setComponentZOrder(ansb, 1);
+		panel.setComponentZOrder(replay, 1);
 		
 		for (int i = 0; i < 13; i++) {
 			buttons[i].addActionListener(new ActionListener() {
@@ -231,7 +239,9 @@ public class Main extends JFrame implements ActionListener {
 							case 1:
 								int diff1 = Math.abs(a[0] - n1);
 								score1 = Score.each(diff1);
+								total += score1;
 								PlaySound.ha(j);
+								ans.setText(Integer.toString(total));
 								//Dart.move(dartlabel);
 								//if(score1==10){
 								//	buttons[j].setBackground(Color.green);
@@ -241,7 +251,9 @@ public class Main extends JFrame implements ActionListener {
 							case 2:
 								int diff2 = Math.abs(a[1] - n2);
 								score2 = Score.each(diff2);
+								total += score2;
 								PlaySound.lo(j);
+								ans.setText(Integer.toString(total));
 								Dart.shooting(1,2,score2,panel);
 								break;
 							case 3:
@@ -250,7 +262,7 @@ public class Main extends JFrame implements ActionListener {
 								PlaySound.world(j);
 								Dart.shooting(1,3,score3,panel);
 
-								total += score1 + score2 + score3;
+								total += score3;
 								//JLabel ans = new JLabel("\nP1總分" + total);
 								//panel.add(ans);
 								//ans.setBounds(50, 110, 80, 80);
@@ -261,21 +273,25 @@ public class Main extends JFrame implements ActionListener {
 							case 4:
 								int diff1b = Math.abs(a[3] - n1);
 								score1b = Score.each(diff1b);
+								totalb +=score1b;
 								PlaySound.ha(j);
 								Dart.shooting(2,1,score1b,panel);
+								ansb.setText(Integer.toString(totalb));
 								break;
 							case 5:
 								int diff2b = Math.abs(a[4] - n2);
 								score2b = Score.each(diff2b);
+								totalb+=score2b;
 								PlaySound.lo(j);
 								Dart.shooting(2,2,score2b,panel);
+								ansb.setText(Integer.toString(totalb));
 								break;
 							case 6:
 								int diff3b = Math.abs(a[5] - n3);
 								score3b = Score.each(diff3b);
 								PlaySound.world(j);
 								Dart.shooting(2,3,score3b,panel);
-								totalb += score1b + score2b + score3b;
+								totalb += score3b;
 								//JLabel ansb = new JLabel("\nP2總分" + totalb);
 								//panel.add(ansb);
 								//ansb.setBounds(700, 110, 80, 80);
@@ -309,11 +325,14 @@ public class Main extends JFrame implements ActionListener {
 									//	winblabel.setVisible(true);
 									
 								}
+								
 								try{
+									Thread.currentThread();
 									Thread.sleep(1600);
 								}catch(InterruptedException e1){
 									e1.printStackTrace();
 								}
+								
 								if(round<4)	game();
 								
 								break;
@@ -329,12 +348,6 @@ public class Main extends JFrame implements ActionListener {
 			});
 
 		}
-		panel.setComponentZOrder(play1, 0);
-		panel.setComponentZOrder(play2, 0);
-		panel.setComponentZOrder(ans, 0);
-		panel.setComponentZOrder(ansb, 0);
-		panel.setComponentZOrder(pialabel, 1);
-		panel.setComponentZOrder(bgl, 3);
 
 		// showing the answer
 		/*

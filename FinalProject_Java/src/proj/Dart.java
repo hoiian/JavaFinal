@@ -47,6 +47,39 @@ public class Dart {
 			}
 		}
 		
+		if(player == 2 && shoot ==1){
+			switch(score){
+			case 0: path="src/proj/img/p2dart/p2_1_+0.gif"; break;
+			case 2: path="src/proj/img/p2dart/p2_1_+2.gif"; break;
+			case 4: path="src/proj/img/p2dart/p2_1_+4.gif"; break;
+			case 6: path="src/proj/img/p2dart/p2_1_+6.gif"; break;
+			case 8: path="src/proj/img/p2dart/p2_1_+8.gif"; break;
+			case 10: path="src/proj/img/p2dart/p2_1_+10.gif"; break;
+			}
+		}
+		
+		if(player == 2 && shoot ==2){
+			switch(score){
+			case 0: path="src/proj/img/p2dart/p2_2_+0.gif"; break;
+			case 2: path="src/proj/img/p2dart/p2_2_+2.gif"; break;
+			case 4: path="src/proj/img/p2dart/p2_2_+4.gif"; break;
+			case 6: path="src/proj/img/p2dart/p2_2_+6.gif"; break;
+			case 8: path="src/proj/img/p2dart/p2_2_+8.gif"; break;
+			case 10: path="src/proj/img/p2dart/p2_2_+10.gif"; break;
+			}
+		}
+		
+		if(player == 2 && shoot ==3){
+			switch(score){
+			case 0: path="src/proj/img/p2dart/p2_3_+0.gif"; break;
+			case 2: path="src/proj/img/p2dart/p2_3_+2.gif"; break;
+			case 4: path="src/proj/img/p2dart/p2_3_+4.gif"; break;
+			case 6: path="src/proj/img/p2dart/p2_3_+6.gif"; break;
+			case 8: path="src/proj/img/p2dart/p2_3_+8.gif"; break;
+			case 10: path="src/proj/img/p2dart/p2_3_+10.gif"; break;
+			}
+		}
+		
 		ImageIcon pic = new ImageIcon(path);
 		dartlabel = new JLabel(pic);
 		dartlabel.setVisible(true);

@@ -9,8 +9,6 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Frame;
 import java.awt.event.*;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import java.applet.*;
 //import java.applet.Applet;
 //import java.applet.AudioClip;
@@ -92,9 +90,8 @@ public class Main extends JFrame implements ActionListener {
 		ImageIcon bg = new ImageIcon("src/proj/img/p2-1.png");
 		bgl = new JLabel(bg);
 		bgl.setBounds(0, 0, 525, 700);
-	//	panel.add(bgl);	
-	//	panel.setComponentZOrder(bgl, 3);
-		
+		panel.add(bgl);	
+
 	//	imagePanel = (JPanel) this.getContentPane();
         //imagePanel.setOpaque(false);
       //  this.getLayeredPane().add(bgl, new Integer(Integer.MIN_VALUE));  
@@ -144,7 +141,6 @@ public class Main extends JFrame implements ActionListener {
 		replay.setBackground(null);
 		replay.setFocusPainted(false);
 		replay.setContentAreaFilled(false);
-
 
 		
 		JLabel dartlabel;
@@ -198,8 +194,6 @@ public class Main extends JFrame implements ActionListener {
 			buttons[8].setLocation(342, 548);
 			buttons[10].setLocation(388, 548);
 
-		
-		JLabel round1label,round2label,pialabel;
 		switch(round){
 		case 1:
 			Photo.round(1, panel);
@@ -211,14 +205,14 @@ public class Main extends JFrame implements ActionListener {
 			Photo.round(3, panel);
 			break;
 		}
-	
+		
+		JLabel pialabel;
 		ImageIcon piano = new ImageIcon("src/proj/img/p2-piano.png");
 		pialabel = new JLabel(piano);
 		pialabel.setVisible(true);
-		pialabel.setBounds(129, 548, 371, 125);
+		pialabel.setBounds(129, 550, 371, 125);
 		panel.add(pialabel);
-		panel.setComponentZOrder(pialabel, 2);
-
+		
 		
 	//	Dart.disapear();
 		
@@ -268,19 +262,19 @@ public class Main extends JFrame implements ActionListener {
 								int diff1b = Math.abs(a[3] - n1);
 								score1b = Score.each(diff1b);
 								PlaySound.ha(j);
-								Dart.shoot(score1b,panel);
+								Dart.shooting(2,1,score1b,panel);
 								break;
 							case 5:
 								int diff2b = Math.abs(a[4] - n2);
 								score2b = Score.each(diff2b);
 								PlaySound.lo(j);
-								Dart.shoot(score2b,panel);
+								Dart.shooting(2,2,score2b,panel);
 								break;
 							case 6:
 								int diff3b = Math.abs(a[5] - n3);
 								score3b = Score.each(diff3b);
 								PlaySound.world(j);
-								Dart.shoot(score3b,panel);
+								Dart.shooting(2,3,score3b,panel);
 								totalb += score1b + score2b + score3b;
 								//JLabel ansb = new JLabel("\nP2總分" + totalb);
 								//panel.add(ansb);
@@ -288,7 +282,7 @@ public class Main extends JFrame implements ActionListener {
 								ansb.setText(Integer.toString(totalb));//P2總分
 								play1.setForeground(new Color(208 , 68, 2));
 								play2.setForeground(new Color(74 , 74, 74));
-								
+
 								String winner = new String();
 								if (total > totalb) {
 									winner = "P1";
@@ -297,6 +291,7 @@ public class Main extends JFrame implements ActionListener {
 								} else {
 									winner = "P2";
 								}
+								
 								round++;
 								if(round==4){
 									winn.setText("WINNER" + winner);
@@ -314,11 +309,18 @@ public class Main extends JFrame implements ActionListener {
 									//	winblabel.setVisible(true);
 									
 								}
+								try{
+									Thread.sleep(1600);
+								}catch(InterruptedException e1){
+									e1.printStackTrace();
+								}
 								if(round<4)	game();
-								
 								
 								break;
 							}
+							
+								
+							
 						}
 
 					}
@@ -327,6 +329,12 @@ public class Main extends JFrame implements ActionListener {
 			});
 
 		}
+		panel.setComponentZOrder(play1, 0);
+		panel.setComponentZOrder(play2, 0);
+		panel.setComponentZOrder(ans, 0);
+		panel.setComponentZOrder(ansb, 0);
+		panel.setComponentZOrder(pialabel, 1);
+		panel.setComponentZOrder(bgl, 3);
 
 		// showing the answer
 		/*
@@ -341,12 +349,8 @@ public class Main extends JFrame implements ActionListener {
 		labans[5].setBounds(460, 70, 50, 50);
 		*/
 
+		
 		frame.setVisible(true);
-		try{
-			Thread.sleep(1600);
-		}catch(InterruptedException e){
-			e.printStackTrace();
-		}
 		
 		PlaySound.question(n1, n2, n3);
 	//	round1label.setVisible(false);
@@ -362,14 +366,29 @@ public class Main extends JFrame implements ActionListener {
 	public static void main(String args[]) {
 		gui();
 		
-		JButton restart = new JButton("玩");
+		ImageIcon start = new ImageIcon("src/proj/img/p1-b2.png");
+		JButton restart = new JButton(start);
 		panel.add(restart);
 		restart.setVisible(true);
-		restart.setBounds(30, 30, 50, 50);
+		restart.setBounds(165, 395, 195, 71);
+		restart.setBorder(null);
+		restart.setBackground(null);
+		restart.setFocusPainted(false);
+		restart.setContentAreaFilled(false);
+
+		ImageIcon pic = new ImageIcon("src/proj/img/p1-1.png");
+		JLabel bgl = new JLabel(pic);
+		bgl.setVisible(true);
+		bgl.setBounds(0,0,525,700);
+		panel.add(bgl);
+		panel.setComponentZOrder(bgl,1);
+		
 		frame.setVisible(true);
 		//game();
 		restart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				restart.setVisible(false);
+				bgl.setVisible(false);
 				game();
 			}
 		});

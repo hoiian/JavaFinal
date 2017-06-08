@@ -95,8 +95,8 @@ public class Main extends JFrame implements ActionListener {
 		ImageIcon bg = new ImageIcon("src/proj/img/p2-1.png");
 		bgl = new JLabel(bg);
 		bgl.setBounds(0, 0, 525, 700);
-		//panel.setComponentZOrder(bgl, 10);
-		//panel.add(bgl);	
+	//	panel.add(bgl);	
+	//	panel.setComponentZOrder(bgl, 3);
 		
 	//	imagePanel = (JPanel) this.getContentPane();
         //imagePanel.setOpaque(false);
@@ -202,45 +202,29 @@ public class Main extends JFrame implements ActionListener {
 			buttons[10].setLocation(388, 548);
 
 		
-		JLabel win1label,win2label,winblabel,round1label,pialabel;
-		ImageIcon win1 = new ImageIcon("src/proj/img/p2-w1.png");
-		ImageIcon win2 = new ImageIcon("src/proj/img/p2-w2.png");
-		ImageIcon winb = new ImageIcon("src/proj/img/p2-w4.png");
-		ImageIcon round1 = new ImageIcon("src/proj/img/p2-r1.png");
+		JLabel round1label,round2label,pialabel;
+		switch(round){
+		case 1:
+			Photo.round(1, panel);
+			break;
+		case 2:
+			Photo.round(2, panel);
+			break;
+		case 3:
+			Photo.round(3, panel);
+			break;
+		}
+	
 		ImageIcon piano = new ImageIcon("src/proj/img/p2-piano.png");
-		
-		win1label = new JLabel(win1);
-		win2label = new JLabel(win2);
-		winblabel = new JLabel(winb);
-		round1label = new JLabel(round1);
 		pialabel = new JLabel(piano);
-
-		win1label.setVisible(false);
-		win2label.setVisible(false);
-		winblabel.setVisible(false);
-		round1label.setVisible(true);
 		pialabel.setVisible(true);
-		
-		win1label.setBounds(0, 0, 525, 700);
-		win2label.setBounds(0, 0, 525, 700);
-		winblabel.setBounds(0, 0, 525, 700);
-		round1label.setBounds(0, 302, 525, 88);
 		pialabel.setBounds(129, 548, 371, 125);
-		
-		
-		panel.add(win1label);
-		panel.add(win2label);
-		panel.add(winblabel);
-		panel.add(round1label);
 		panel.add(pialabel);
-		
 		panel.setComponentZOrder(pialabel, 2);
-		panel.setComponentZOrder(win1label, 0);
-		panel.setComponentZOrder(win2label, 0);
-		panel.setComponentZOrder(winblabel, 0);
-		panel.setComponentZOrder(round1label, 0);
-		
 
+		
+	//	Dart.disapear();
+		
 		for (int i = 0; i < 13; i++) {
 			buttons[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -261,16 +245,19 @@ public class Main extends JFrame implements ActionListener {
 								//if(score1==10){
 								//	buttons[j].setBackground(Color.green);
 								//}else buttons[j].setBackground(Color.red);
+								Dart.shooting(1,1,score1,panel);
 								break;
 							case 2:
 								int diff2 = Math.abs(a[1] - n2);
 								score2 = Score.each(diff2);
 								PlaySound.lo(j);
+								Dart.shooting(1,2,score2,panel);
 								break;
 							case 3:
 								int diff3 = Math.abs(a[2] - n3);
 								score3 = Score.each(diff3);
 								PlaySound.world(j);
+								Dart.shooting(1,3,score3,panel);
 
 								total += score1 + score2 + score3;
 								//JLabel ans = new JLabel("\nP1總分" + total);
@@ -284,16 +271,19 @@ public class Main extends JFrame implements ActionListener {
 								int diff1b = Math.abs(a[3] - n1);
 								score1b = Score.each(diff1b);
 								PlaySound.ha(j);
+								Dart.shoot(score1b,panel);
 								break;
 							case 5:
 								int diff2b = Math.abs(a[4] - n2);
 								score2b = Score.each(diff2b);
 								PlaySound.lo(j);
+								Dart.shoot(score2b,panel);
 								break;
 							case 6:
 								int diff3b = Math.abs(a[5] - n3);
 								score3b = Score.each(diff3b);
 								PlaySound.world(j);
+								Dart.shoot(score3b,panel);
 								totalb += score1b + score2b + score3b;
 								//JLabel ansb = new JLabel("\nP2總分" + totalb);
 								//panel.add(ansb);
@@ -310,22 +300,25 @@ public class Main extends JFrame implements ActionListener {
 								} else {
 									winner = "P2";
 								}
-								
-								if(round==3){
+								round++;
+								if(round==4){
 									winn.setText("WINNER" + winner);
 									//ques.setText("正確答案:" + Score.note(n1) + ' ' + Score.note(n2) + ' ' + Score.note(n3));
 									if(winner.equals("P1"))
 									{
-										win1label.setVisible(true);
+										Photo.winner("src/proj/img/p2-w1.png", panel);
+										//win1label.setVisible(true);
 									}else if(winner.equals("P2"))
 									{
-										win2label.setVisible(true);
+										Photo.winner("src/proj/img/p2-w2.png", panel);
+										//win2label.setVisible(true);
 									}else 
-										winblabel.setVisible(true);
+										Photo.winner("src/proj/img/p2-w4.png", panel);
+									//	winblabel.setVisible(true);
 									
 								}
-								if(round<3)	game();
-								round++;
+								if(round<4)	game();
+								
 								
 								break;
 							}
@@ -352,7 +345,7 @@ public class Main extends JFrame implements ActionListener {
 		frame.setVisible(true);
 
 		PlaySound.question(n1, n2, n3);
-		round1label.setVisible(false);
+	//	round1label.setVisible(false);
 		
 		replay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

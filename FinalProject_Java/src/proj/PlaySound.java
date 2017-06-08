@@ -80,13 +80,6 @@ public class PlaySound {
 	
 	public static void question(int n1, int n2, int n3){
 		
-		//play("src/proj/sound/win.wav");
-		try{
-			Thread.sleep(1600);
-		}catch(InterruptedException e){
-			e.printStackTrace();
-		}
-		
 		ha(n1);
 		
 		try{

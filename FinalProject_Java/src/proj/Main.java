@@ -50,9 +50,17 @@ public class Main extends JFrame implements ActionListener {
 	static JLabel ans = new JLabel("0"); //P1¤À
 	static JLabel ansb = new JLabel("0"); //P2¤À
 
-	// AudioClip[] m_AudioClip=new AudioClip[14];
+
 	public Main(){
 
+	}
+	public static void gui(){
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(540, 715);
+
+		frame.add(panel);
+	//	frame.setContentPane(panel);
+		panel.setLayout(null);
 	}
 
 
@@ -79,17 +87,6 @@ public class Main extends JFrame implements ActionListener {
 		int n2 = rand.nextInt(13);
 		int n3 = rand.nextInt(13);
 
-		//final JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(540, 715);
-		// frame.setVisible(true);
-
-		//JPanel panel = new JPanel();
-		frame.add(panel);
-	//	frame.setContentPane(panel);
-		panel.setLayout(null);
-	//	panel.setOpaque(false); 
-		JPanel imagePanel = null;
 		
 		JLabel bgl;
 		ImageIcon bg = new ImageIcon("src/proj/img/p2-1.png");
@@ -332,6 +329,7 @@ public class Main extends JFrame implements ActionListener {
 		}
 
 		// showing the answer
+		/*
 		for (int i = 0; i < 6; i++) {
 			panel.add(labans[i]);
 		}
@@ -341,9 +339,15 @@ public class Main extends JFrame implements ActionListener {
 		labans[3].setBounds(400, 70, 50, 50);
 		labans[4].setBounds(430, 70, 50, 50);
 		labans[5].setBounds(460, 70, 50, 50);
+		*/
 
 		frame.setVisible(true);
-
+		try{
+			Thread.sleep(1600);
+		}catch(InterruptedException e){
+			e.printStackTrace();
+		}
+		
 		PlaySound.question(n1, n2, n3);
 	//	round1label.setVisible(false);
 		
@@ -356,10 +360,14 @@ public class Main extends JFrame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
+		gui();
+		
 		JButton restart = new JButton("ª±");
 		panel.add(restart);
+		restart.setVisible(true);
 		restart.setBounds(30, 30, 50, 50);
-		game();
+		frame.setVisible(true);
+		//game();
 		restart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				game();
